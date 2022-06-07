@@ -1,0 +1,101 @@
+/*Inicio de los estilos para el patrón de diseño "Tiny tweaks"*/
+
+.c1 {
+    font-family: Helvetica;
+    color: white;
+    padding: 10px;
+    width: 85%;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    
+  @media (min-width: 500px) {
+    .c1 {
+      padding: 40px;
+    }
+  }
+    
+  @media (min-width: 800px) {
+    .c1 {
+      padding: 0px;
+    }
+  }
+  
+  /*Fin de los estilos para el patrón de diseño "Tiny tweaks"*/
+  
+  .usuario{
+    float: right;
+  }
+  
+  .menu{
+      margin-bottom: 3%;
+      text-align: center;
+      color: white ;
+  }
+  
+  body{
+    background-image: url("../img/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+  }
+  
+  h1{
+    padding-bottom: -10;
+  }
+  
+  label{
+    font-size: 18px;
+  }
+  
+  .menu a{
+    padding: 15px;
+    line-height: normal;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    font-size: 15px;
+    margin-right: 5px;
+  }
+  
+  .menu a:hover{
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #3d8181b8;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #4fa0a0b8;
+  }
+  
+  tbody tr {
+    background-image: url(noise.png);
+  }
+  
+  table {
+    background-color: #3d8181b8;
+    font-family: 'Rock Salt', cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: rgb(255, 255, 255);
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  caption {
+    font-family: 'Rock Salt', cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: #666;
+    text-align: right;
+    letter-spacing: 1px;
+  }

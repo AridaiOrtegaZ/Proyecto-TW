@@ -16,6 +16,6 @@ $query=mysqli_query($con,$sql);
 $query=mysqli_query($con,$sql2);
 //$query2=mysqli_query($con,$sql2);
     if($query){
-        Header("Location: usuarios.php");
+        Header("Location: roles.php");
     }
 ?>

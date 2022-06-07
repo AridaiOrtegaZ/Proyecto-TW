@@ -1,4 +1,15 @@
 <?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
+<?php
 include("conexion.php");
 require_once "config.php";
 
@@ -121,18 +132,47 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $mysqli->close();
 }
 ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>ASIGNAR ROL</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido Administrador</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <style>
+        body{ font: 14px sans-serif; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="usuario">
+        <?php
+        $usuario = $_SESSION['username'];
+        echo "<p><h3>$usuario</h3></p>";
+        ?>
+        <figure>
+            <button type="button" onclick="document.location='logout.php'"> <img src="../img/logout.png" height="50px" width="50px"> </button>
+            <figcaption>Cerrar Sesión</figcaption>
+        </figure>
+    </div>
+
+    <div class="container" role="main">
         
-    </head>
-    <body>
-        <div class="container mt-5">
+        <div class="c1">
+
+            <div class="menu">
+                <a href="../../login/welcome.php">Acerca de nosotros</a>
+                <a href="#">Registro de solicitud</a>
+                <a href="../listaUsuarios/alumno.php">Lista de usuarios</a>
+                <a href="#">Roles</a>
+                <a href="#">Bitácora de uso</a>
+                <a href="#">Observaciones</a>
+                <a href="../equipos/equipos.php">Equipos</a>
+                <a href="#">Chat</a>
+            </div>
+
+            <div class="container mt-5">
             <div class="row">         
                 <div class="col-md-3">
                     <h1>Crear nueva cuenta</h1>
@@ -190,5 +230,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
             </div>  
         </div>
-    </body>
+
+        </div>
+
+        <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>
+    <p>
+        <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
+        <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
+    </p>-->
+
+    </div>
+
+    
+</body>
 </html>

@@ -174,6 +174,44 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 (6, 'user10', '$2y$10$g35GUYOlw.Jv/wizPdJ1Du/EC/fjIjEnp1P9AhLGigSeusl0p9qQS', '2022-05-28 01:21:57');
 COMMIT;
 
+CREATE TABLE `computadora` (
+  `id` int(11) NOT NULL,
+  `ip` varchar(50) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `estado` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `computadora`
+--
+
+INSERT INTO `computadora` (`id`, `ip`, `nombre`, `estado`) VALUES
+(1, '192.168.1.5', 'Computadora 1W', 'Ocupado'),
+(2, '192.168.1.2', 'Computadora 2W', 'Disponible'),
+(3, '192.168.1.4', 'Computadora 4W', 'Disponible');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `computadora`
+--
+ALTER TABLE `computadora`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `computadora`
+--
+ALTER TABLE `computadora`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
