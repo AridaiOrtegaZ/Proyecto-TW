@@ -162,14 +162,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="c1">
 
             <div class="menu">
-                <a href="../../login/welcome.php">Acerca de nosotros</a>
-                <a href="../../solicitudes/index.php">Registro de solicitud</a>
-                <a href="../listaUsuarios/alumno.php">Lista de usuarios</a>
-                <a href="#">Roles</a>
-                <a href="../../solicitudes/tabla.php">Bitácora de uso</a>
-                <a href="#">Observaciones</a>
-                <a href="../equipos/equipos.php">Equipos</a>
-                <a href="#">Chat</a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                            <li class="nav-item">
+                                    <a class="nav-link" href="../../login/welcome.php">Acerca de Nosotros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../solicitudes/index.php">Registro de solicitud</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../listaUsuarios/alumno.php">Lista de usuarios</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../admin/roles/roles.php">Roles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../solicitudes/tabla.php">Bitácora de uso</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Observaciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../equipos/equipos.php">Equipos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../chat/paginaChat">Chat</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
 
             <div class="container mt-5">
@@ -203,9 +230,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <table class="table" >
                         <thead class="table-success table-striped" >
                             <tr>
-                                <th>id</th>
-                                <th>username</th>
-                                <th>password</th>
+                                <th style="color:#000000">id</th>
+                                <th style="color:#000000">username</th>
+                                <th style="color:#000000">password</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -216,11 +243,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 while($row=mysqli_fetch_array($query)){
                             ?>
                             <tr>
-                                <th><?php  echo $row['id']?></th>
-                                <th><?php  echo $row['username']?></th> 
-                                <th><?php  echo $row['password']?></th> 
-                                <th><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Asignar</a></th>
-                                <th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                <th style="color:#ffffff" ><?php  echo $row['id']?></th>
+                                <th style="color:#ffffff" ><?php  echo $row['username']?></th> 
+                                <th style="color:#ffffff" ><?php  echo $row['password']?></th> 
+                                <th style="color:#ffffff" ><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Asignar</a></th>
+                                <th style="color:#ffffff"><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
                             </tr>
                                 <?php 
                                     }
