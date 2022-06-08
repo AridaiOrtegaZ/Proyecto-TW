@@ -163,10 +163,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="menu">
                 <a href="../../login/welcome.php">Acerca de nosotros</a>
-                <a href="#">Registro de solicitud</a>
+                <a href="../../solicitudes/index.php">Registro de solicitud</a>
                 <a href="../listaUsuarios/alumno.php">Lista de usuarios</a>
                 <a href="#">Roles</a>
-                <a href="#">Bitácora de uso</a>
+                <a href="../../solicitudes/tabla.php">Bitácora de uso</a>
                 <a href="#">Observaciones</a>
                 <a href="../equipos/equipos.php">Equipos</a>
                 <a href="#">Chat</a>

@@ -47,7 +47,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link active" aria-current="page" href="../login/welcome2.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Registro de solicitud</a>
+                                    <a class="nav-link active" aria-current="page" href="../solicitudes/index.php">Registro de solicitud</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Observaciones</a>
