@@ -45,7 +45,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <a class="nav-link active" aria-current="page" href="../login/welcome3.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Prestamos por E.E</a>
+                                    <a class="nav-link" href="../profesor/prestamosEE/prestamos.php">Prestamos por E.E</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Lista de equipos</a>
