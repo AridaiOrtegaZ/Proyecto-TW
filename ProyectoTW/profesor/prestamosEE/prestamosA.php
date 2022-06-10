@@ -9,16 +9,35 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 
+
 <?php
     include_once "conexion.php";
-    $materia = $_GET['materia'];
-    if( $materia == "todas"){
-        $sentencia = $bd -> query("select * from solicitud");
+    date_default_timezone_set('America/Mexico_City'); 
+
+    $fechaActual = date('Y-n-j');
+    $dia = $_GET['dia'];
+
+    $date = strtotime(date("Y-n-j"));
+    $first = strtotime('last Sunday -7 days');
+    $second = strtotime('last  -6 days');
+    $last = strtotime('next Saturday -7 days');
+
+    echo date('Y-n-j', $first);
+    echo '<br>';
+    echo date('Y-n-j', $last); 
+    echo '<br>';
+    echo date('Y-n-j', $second);  
+
+    if( $dia == "hoy"){
+        $sentencia = $bd -> query("select * from solicitud where fecha = '$fechaActual'");
         $solicitud= $sentencia->fetchAll(PDO::FETCH_OBJ);
     }else{
-        $sentencia = $bd -> query("select * from solicitud where materia = '$materia'");
+        $sentencia = $bd -> query("select * from solicitud");
         $solicitud= $sentencia->fetchAll(PDO::FETCH_OBJ);
-    }   
+    }
+
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +51,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
 </head>
 <body>
+
     <div class="usuario">
         <?php
         $usuario = $_SESSION['username'];
@@ -58,13 +78,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <a class="nav-link" href="../../login/welcome3.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Prestamos por E.E</a>
+                                    <a class="nav-link" href="prestamos.php?materia=todas">Prestamos por E.E</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../equipos/equipos.php">Lista de equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="prestamosA.php?dia=todos">Historial de prestamos</a>
+                                    <a class="nav-link active" aria-current="page" href="#">Historial de prestamos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../chat/paginaChat">Chat</a>
@@ -89,9 +109,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div-->
 
         </div>
-<FORM METHOD=POST ACTION="buscar.php">
-  Buscar: <INPUT TYPE="text" NAME="busqueda">
-  <input type="submit" class="btn btn-success" value="Buscar" action="buscar.php" >
+<FORM METHOD=POST ACTION="buscarD.php">
+    <SELECT NAME="selCombo" SIZE=1 >
+        <OPTION>Selecciona</OPTION> 
+        <OPTION VALUE="hoy">Hoy</OPTION>
+        <OPTION VALUE="todos">Todos</OPTION>
+    </SELECT> 
+  <input type="submit" class="btn btn-success" value="Buscar" action="buscarD.php" >
 </FORM>
 
         

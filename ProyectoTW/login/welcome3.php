@@ -45,13 +45,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <a class="nav-link active" aria-current="page" href="../login/welcome3.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../profesor/prestamosEE/prestamos.php">Prestamos por E.E</a>
+                                    <a class="nav-link" href="../profesor/prestamosEE/prestamos.php?materia=todas">Prestamos por E.E</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Lista de equipos</a>
+                                    <a class="nav-link" href="../profesor/equipos/equipos.php">Lista de equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Historial de prestamos</a>
+                                    <a class="nav-link" href="../profesor/prestamosEE/prestamosA.php?dia=todos">Historial de prestamos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../chat/paginaChat">Chat</a>
