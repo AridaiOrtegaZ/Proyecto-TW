@@ -78,6 +78,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <li class="nav-item">
                                     <a class="nav-link" href="../../chat/paginaChatAdministrador.php">Chat</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

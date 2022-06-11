@@ -42,13 +42,16 @@
                             <a class="nav-link" href="../solicitudes/tabla.php">Bitácora de uso</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Observaciones</a>
+                            <a class="nav-link" href="../observaciones/listaObservaciones.php">Observaciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../admin/equipos/equipos.php">Equipos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../chat/paginaChat">Chat</a>
+                            <a class="nav-link" href="../chat/paginaChatAdministrador.php">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
                         </li>
                     </ul>
                 </div>
