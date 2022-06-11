@@ -76,7 +76,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <a class="nav-link" href="../equipos/equipos.php">Equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../chat/paginaChat">Chat</a>
+                                    <a class="nav-link" href="../chat/paginaChat.php">Chat</a>
                                 </li>
                             </ul>
                         </div>

@@ -22,12 +22,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $second = strtotime('last  -6 days');
     $last = strtotime('next Saturday -7 days');
 
-    echo date('Y-n-j', $first);
-    echo '<br>';
-    echo date('Y-n-j', $last); 
-    echo '<br>';
-    echo date('Y-n-j', $second);  
-
     if( $dia == "hoy"){
         $sentencia = $bd -> query("select * from solicitud where fecha = '$fechaActual'");
         $solicitud= $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -85,9 +79,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#">Historial de prestamos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../chat/paginaChat">Chat</a>
                                 </li>
                             </ul>
                         </div>
@@ -220,11 +211,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
         <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>-->
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
-
     </div>
 </body>
 </html>

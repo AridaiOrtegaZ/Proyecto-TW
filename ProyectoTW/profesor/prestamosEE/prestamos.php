@@ -66,9 +66,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <li class="nav-item">
                                     <a class="nav-link" href="prestamosA.php?dia=todos">Historial de prestamos</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../chat/paginaChat">Chat</a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -196,10 +193,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
         <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>-->
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
 
     </div>
 </body>

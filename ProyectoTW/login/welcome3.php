@@ -53,18 +53,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <li class="nav-item">
                                     <a class="nav-link" href="../profesor/prestamosEE/prestamosA.php?dia=todos">Historial de prestamos</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../chat/paginaChat">Chat</a>
-                                </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
             </div>
 
-            <!--div class="contenido">
+            <div class="contenido">
                 <hr>
-                <h1>Bienvenido</h1>
+                <h1>Bienvenido Profesor</h1>
                 <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
                     unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
                     la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
@@ -73,7 +70,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
                     el registro de solicitudes de prétamos del equipo de cómputo.
                 </p>
-            </div-->
+            </div>
 
         </div>
 
