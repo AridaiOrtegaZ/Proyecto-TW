@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2022 a las 23:53:47
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 11-06-2022 a las 06:35:08
+-- Versión del servidor: 8.0.27
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `admin`
@@ -50,12 +53,15 @@ INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES
 -- Estructura de tabla para la tabla `alumno`
 --
 
-CREATE TABLE `alumno` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `alumno`;
+CREATE TABLE IF NOT EXISTS `alumno` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `alumno`
@@ -74,12 +80,14 @@ INSERT INTO `alumno` (`id`, `username`, `password`, `created_at`) VALUES
 -- Estructura de tabla para la tabla `chat_dudas`
 --
 
-CREATE TABLE `chat_dudas` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `mensaje` varchar(1000) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `chat_dudas`;
+CREATE TABLE IF NOT EXISTS `chat_dudas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `mensaje` varchar(300) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -87,12 +95,14 @@ CREATE TABLE `chat_dudas` (
 -- Estructura de tabla para la tabla `computadora`
 --
 
-CREATE TABLE `computadora` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `computadora`;
+CREATE TABLE IF NOT EXISTS `computadora` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `ip` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `estado` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `estado` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `computadora`
@@ -106,15 +116,33 @@ INSERT INTO `computadora` (`id`, `ip`, `nombre`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `observacion`
+--
+
+DROP TABLE IF EXISTS `observacion`;
+CREATE TABLE IF NOT EXISTS `observacion` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `comentario` varchar(300) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profesor`
 --
 
-CREATE TABLE `profesor` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `profesor`;
+CREATE TABLE IF NOT EXISTS `profesor` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `profesor`
@@ -131,8 +159,9 @@ INSERT INTO `profesor` (`id`, `username`, `password`, `created_at`) VALUES
 -- Estructura de tabla para la tabla `solicitud`
 --
 
-CREATE TABLE `solicitud` (
-  `codigo` int(11) NOT NULL,
+DROP TABLE IF EXISTS `solicitud`;
+CREATE TABLE IF NOT EXISTS `solicitud` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
   `matricula` varchar(20) DEFAULT NULL,
   `carrera` varchar(20) DEFAULT NULL,
@@ -140,12 +169,13 @@ CREATE TABLE `solicitud` (
   `hora_salida` time(6) NOT NULL,
   `nom_equipo` varchar(20) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
-  `num_inventario` int(100) DEFAULT NULL,
+  `num_inventario` int DEFAULT NULL,
   `objetivo_prestamo` varchar(200) DEFAULT NULL,
   `materia` varchar(100) DEFAULT NULL,
   `maestro` varchar(100) DEFAULT NULL,
-  `fecha` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `solicitud`
@@ -167,12 +197,15 @@ INSERT INTO `solicitud` (`codigo`, `nombre`, `matricula`, `carrera`, `hora_entra
 -- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -181,106 +214,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 (5, 'user9', '$2y$10$r8HljQAs0WaFPhmxn9HLseqndmKObzyFdGGEqa4n6suSOlxjmzjlW', '2022-05-28 00:47:33'),
 (6, 'user10', '$2y$10$g35GUYOlw.Jv/wizPdJ1Du/EC/fjIjEnp1P9AhLGigSeusl0p9qQS', '2022-05-28 01:21:57');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indices de la tabla `alumno`
---
-ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indices de la tabla `chat_dudas`
---
-ALTER TABLE `chat_dudas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `computadora`
---
-ALTER TABLE `computadora`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `profesor`
---
-ALTER TABLE `profesor`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indices de la tabla `solicitud`
---
-ALTER TABLE `solicitud`
-  ADD PRIMARY KEY (`codigo`);
-
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `alumno`
---
-ALTER TABLE `alumno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `chat_dudas`
---
-ALTER TABLE `chat_dudas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `computadora`
---
-ALTER TABLE `computadora`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `profesor`
---
-ALTER TABLE `profesor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `solicitud`
---
-ALTER TABLE `solicitud`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-

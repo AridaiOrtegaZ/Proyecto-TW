@@ -1,4 +1,8 @@
 <?php
+    include "db/db.php";
+?>
+
+<?php
 // Initialize the session
 session_start();
 
@@ -14,14 +18,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenido Administrador</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT CON PHP, MYSQL Y AJAX</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 
-<body>
+<body onload="ajax()">
 
-    <div class="usuario">
+<div class="usuario">
         <?php
         $usuario = $_SESSION['username'];
         echo "<p><h4>$usuario</h4></p>";
@@ -42,8 +48,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item">
+                        <ul class="navbar-nav">
+                                <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
@@ -72,32 +78,50 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </div>
                 </nav>
             </div>
-
-            <div class="contenido">
-                <hr>
-                <h1>Bienvenido</h1>
-                <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
-                    unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
-                    la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
-                </p>
-                <p>Este sistema fue elaborado con el objetivo de facilitar diversas tareas al personal del Centro de Cómputo de la Facultad
-                    de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
-                    el registro de solicitudes de prétamos del equipo de cómputo.
-                </p>
-            </div>
-
+        </div>
         </div>
 
-        <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>-->
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
+    <div id="contenedor">
+        <div id="caja-chat">
+            <div id="chat">
+            </div>
+        </div>
+        <form method="POST" action="paginaChatAlumno.php">
+            <textarea name="mensaje" placeholder="Ingresa tu mensaje" required></textarea>
+            <input type="submit" name="enviar" value="Enviar">
+        </form>
+        <?php
+            if(isset($_POST['enviar'])){
+                $nombre = $_SESSION['username'];
+                $mensaje = $_POST['mensaje'];
 
+                $consulta = "INSERT into chat_dudas (nombre, mensaje) VALUES ('$nombre', '$mensaje')";
+                $ejecutar = $conexion->query($consulta);
+            }
+        ?>
     </div>
-
-
 </body>
+
+<script type="text/javascript">
+    function ajax(){
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function(){
+            if(req.readyState == 4 && req.status == 200){
+                document.getElementById('chat').innerHTML = req.responseText;
+            }
+        }
+
+        req.open('GET', 'chat.php', true);
+        req.send();
+
+    }
+    
+    //esta linea hace que se refresque la página cada segundo
+    setInterval(function(){
+        ajax();
+    },1000);
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

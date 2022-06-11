@@ -34,13 +34,13 @@
                             <a class="nav-link" href="../solicitudes/tabla.php">Bitácora de uso</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Observaciones</a>
+                            <a class="nav-link" href="../observaciones/listaObservaciones.php">Observaciones</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../admin/equipos/equipos.php">Equipos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../chat/paginaChat">Chat</a>
+                            <a class="nav-link" href="../chat/paginaChatAdministrador.php">Chat</a>
                         </li>
                     </ul>
                 </div>
@@ -135,6 +135,8 @@
         </div>
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 

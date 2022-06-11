@@ -53,10 +53,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link" href="../alumno/equipos/equipos.php">Equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Observaciones</a>
+                                    <a class="nav-link" href="../observaciones/formularioObservacion.php">Observaciones</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../chat/paginaChat.php">Chat</a>
+                                    <a class="nav-link" href="../chat/paginaChatAlumno.php">Chat</a>
                                 </li>
                             </ul>
                         </div>
@@ -86,5 +86,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
     </p>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>

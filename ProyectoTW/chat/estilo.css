@@ -1,16 +1,74 @@
-*{
-    padding: 0;
-    margin: 0;
-    border:0;
+/*Inicio de los estilos para el patrÃ³n de diseÃ±o "Tiny tweaks"*/
+
+.c1 {
+    font-family: Helvetica;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    
+  @media (min-width: 500px) {
+    .c1 {
+      padding: 40px;
+    }
+  }
+    
+  @media (min-width: 800px) {
+    .c1 {
+      padding: 0px;
+    }
+  }
+  
+  /*Fin de los estilos para el patrÃ³n de diseÃ±o "Tiny tweaks"*/
+  
+  .usuario{
+    margin-top: none;
+    margin-bottom: none;
+    float: right;
+    position: right;
+    color: white;
+  }
+  
+  body{
+    background-image: url("../chat/img/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .menu{
+      margin-bottom: 2%;
+      text-align: center;
+  }
+
+  .menu a{
+  padding: 15px;
+  line-height: normal;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+  margin-right: 5px;
 }
 
-body{
-    background: #972247;
+.menu a:hover{
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+button{
+  text-align: center;
+  color: darkblue;
 }
 
 #contenedor{
     width: 40%;
-    background: #fff;
+    background: #3d8181b8;
     margin: 0 auto;
     padding: 20px;
     border-radius: 12px;
@@ -44,6 +102,8 @@ input[type='submit']{
     border: 1px solid gray;
     border-radius: 5px;
     cursor: pointer;
+    color: white;
+    background-color: black;
 }
 
 textarea{
