@@ -44,16 +44,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../login/welcome2.php">Acerca de Nosotros</a>
+                                    <a class="nav-link"  href="../login/welcome2.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="../alumno/solicitud/index.php">Registro de solicitud</a>
+                                    <a class="nav-link" href="../alumno/solicitud/index.php">Registro de solicitud</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../alumno/equipos/equipos.php">Equipos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../observaciones/formularioObservacion.php">Observaciones</a>
+                                    <a class="nav-link active" aria-current="page" href="../observaciones/formularioObservacion.php">Observaciones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../chat/paginaChatAlumno.php">Chat</a>
@@ -117,16 +117,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>  
             </div>
         </div>
-          
-
-
-
         </div>
-
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
 
     </div>
 

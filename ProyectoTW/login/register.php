@@ -123,16 +123,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <meta charset="UTF-8">
         <title>Registrarse</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/login.css">
         <style>
             body{ font: 14px sans-serif; }
             .wrapper{ width: 360px; padding: 20px; }
         </style>
     </head>
 <body>
-    <div class="wrapper">
-        <h2>Regístrate</h2>
-        <p>Llena el formulario para crear tu cuenta.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <div class="wrapper" id="contenedor">
+    <div id="contenedorcentrado">
+    <div id="login">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="loginform">
             <div class="form-group">
                 <label>Nombre de usuario</label>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
@@ -150,10 +151,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
-            <p>¿Ya tienes una cuenta? <a href="login.php">Inicia Sesión</a>.</p>
+            </div>
         </form>
+        <div id="derecho">
+            <div class="titulo">
+                Regístrate
+            </div>
+                <hr>
+                    <div class="pie-form">
+                        <a href="login.php">¿Ya tienes cuenta? Inicia Sesión</a>
+                <hr>
+        </div>
+    </div> 
+    </div>  
     </div>    
 </body>
 </html>

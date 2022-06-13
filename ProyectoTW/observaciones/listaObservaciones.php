@@ -44,7 +44,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
+                                    <a class="nav-link" href="../login/welcome.php">Acerca de Nosotros</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../solicitudes/index.php">Registro de solicitud</a>
@@ -59,7 +59,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link" href="../solicitudes/tabla.php">Bitácora de uso</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../observaciones/listaObservaciones.php">Observaciones</a>
+                                    <a class="nav-link active" aria-current="page" href="../observaciones/listaObservaciones.php">Observaciones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../admin/equipos/equipos.php">Equipos</a>
@@ -118,16 +118,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>  
             </div>
         </div>
-          
-
-
-
         </div>
-
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
 
     </div>
 

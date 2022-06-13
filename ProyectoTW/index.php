@@ -181,23 +181,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login/css/login.css">
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
     </style>
+    
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Iniciar sesión</h2>
-        <p>Llena tus datos para inciar sesión.</p>
-
+    <div class="wrapper" id="contenedor">
+    <div id="contenedorcentrado">
+        <div id="login">
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }        
         ?>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="loginform">
             <div class="form-group">
                 <label>Nombre de usuario</label>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
@@ -211,8 +212,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>¿Aún no tienes una cuenta? <a href="register.php">Regístrate</a>.</p>
+        </div>
         </form>
+
+        <div id="derecho">
+                    <div class="titulo">
+                        Iniciar Sesión
+                    </div>
+                    <hr>
+                    <div class="pie-form">
+                        <a href="login/register.php">¿No tienes Cuenta? Registrate</a>
+                        <hr>
+                    </div>
+                </div>
+        </div>
     </div>
 </body>
 </html>
