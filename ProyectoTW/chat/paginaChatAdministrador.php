@@ -89,7 +89,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div id="chat">
             </div>
         </div>
-        <form method="POST" action="paginaChatAlumno.php">
+        <form method="POST" action="paginaChatAdministrador.php">
             <textarea name="mensaje" placeholder="Ingresa tu mensaje" required></textarea>
             <input type="submit" name="enviar" value="Enviar">
         </form>
