@@ -81,6 +81,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <li class="nav-item">
                                     <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../chat-websocket/htdocs/sala_chat/clienteAdministrador.php">Chat usuarios anónimos</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

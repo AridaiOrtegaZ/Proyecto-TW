@@ -9,19 +9,79 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Observaciones de alumnos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>WebSocket</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript">
+		var socket;
+
+
+		function init() {
+			// Apuntar a la IP/Puerto configurado en el contructor del WebServerSocket, que es donde está escuchando el socket.
+			var host = "ws://localhost:9000";
+			try {
+				socket = new WebSocket(host);
+				log('Bienvenido - status ' + socket.readyState);
+				socket.onopen = function (msg) {
+					log("En línea - status " + this.readyState);
+				};
+				socket.onmessage = function (msg) {
+					log("Recibido: " + msg.data);
+				};
+				socket.onclose = function (msg) {
+					log("Desconectado - status " + this.readyState);
+				};
+			}
+			catch (ex) {
+				log(ex);
+			}
+			$("msg").focus();
+		}
+
+		function send() {
+			var txt, msg;
+			txt = $("msg");
+			msg = txt.value;
+			if (!msg) {
+				alert("El mensaje no pudo ser enviado");
+				return;
+			}
+			txt.value = "";
+			txt.focus();
+			try {
+				socket.send(msg);
+				log('Enviado: ' + msg);
+			} catch (ex) {
+				log(ex);
+			}
+		}
+		function quit() {
+			if (socket != null) {
+				log("Adiós!");
+				socket.close();
+				socket = null;
+			}
+		}
+
+		function reconnect() {
+			quit();
+			init();
+		}
+
+		// Utilities
+		function $(id) { return document.getElementById(id); }
+		function log(msg) { $("log").innerHTML += "<br>" + msg; }
+		function onkey(event) { if (event.keyCode == 13) { send(); } }
+	</script>
+
 </head>
 
-<body>
+<body onload="init()">
 
-    <div class="usuario">
+	<div class="usuario">
         <?php
         $usuario = $_SESSION['username'];
         echo "<p><h4>$usuario</h4></p>";
@@ -42,10 +102,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../login/welcome.php">Acerca de Nosotros</a>
-                                </li>
+							<li class="nav-item">
+                            	<a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
+                            </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../solicitudes/index.php">Registro de solicitud</a>
                                 </li>
@@ -59,7 +118,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link" href="../solicitudes/tabla.php">Bitácora de uso</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../observaciones/listaObservaciones.php">Observaciones</a>
+                                    <a class="nav-link" href="../observaciones/listaObservaciones.php">Observaciones</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../admin/equipos/equipos.php">Equipos</a>
@@ -73,58 +132,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <li class="nav-item">
                                     <a class="nav-link" href="../../chat-websocket/htdocs/sala_chat/clienteAdministrador.php">Chat usuarios anónimos</a>
                                 </li>
-                            </ul>
                         </div>
                     </div>
                 </nav>
             </div>
 
-            <?php 
-            include("../observaciones/db/conexion.php");
-
-            $sql="SELECT * FROM observacion";
-            $query=mysqli_query($conexion,$sql);
-            ?>
-
-            <div class="tablaObservaciones">
-                <hr>
-                <h1>OTROS COMENTARIOS</h1>
-                <div class="container mt-5">
-            <div class="row">         
-                <div class="col-md-8">
-                    <table class="table" >
-                        <thead class="table-success table-striped" >
-                            <tr>
-                                <th>id</th>
-                                <th>nombre</th>
-                                <th>comentario</th>
-                                <th>ip</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-                                while($row=mysqli_fetch_array($query)){
-                            ?>
-                            <tr>
-                                <th><?php  echo $row['id']?></th>
-                                <th><?php  echo $row['nombre']?></th> 
-                                <th><?php  echo $row['comentario']?></th>
-                                <th><?php  echo $row['ip']?></th>                                        
-                            </tr>
-                                <?php 
-                                    }
-                                ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>  
-            </div>
-        </div>
         </div>
 
-    </div>
+        <h3>Chat "Usuarios no registrados"</h3>
 
+		<div class="chatWebSocket">
+			<div id="log"></div>
+				<p><input id="msg" type="textbox" onkeypress="onkey(event)" /></p>
+				<button class="btn btn-primary" onclick="send()">Enviar</button>
+				<button class="btn btn-light" onclick="reconnect()">Reconectar</button>
+			</div>
+
+		</div>
+	
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
