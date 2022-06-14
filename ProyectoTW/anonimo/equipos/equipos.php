@@ -23,42 +23,6 @@
     <div class="container" role="main">
 
         <div class="c1">
-            <div class="menu">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item">
-                                    <a class="nav-link" href="../../index.php">Volver</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../../chat-websocket/clienteAnonimo.php">Chat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Lista de equipos</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-
-            <!--div class="contenido">
-                <hr>
-                <h1>Bienvenido</h1>
-                <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
-                    unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
-                    la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
-                </p>
-                <p>Este sistema fue elaborado con el objetivo de facilitar diversas tareas al personal del Centro de Cómputo de la Facultad
-                    de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
-                    el registro de solicitudes de prétamos del equipo de cómputo.
-                </p>
-            </div-->
-
         </div>
         
 <div class="card-body">

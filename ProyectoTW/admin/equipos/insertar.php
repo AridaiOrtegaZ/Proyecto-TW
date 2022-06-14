@@ -7,7 +7,7 @@ $ip=$_POST['ip'];
 $estado=$_POST['estado'];
 
 
-$sql="INSERT INTO computadora VALUES('','$ip','$nombre','$estado')";
+$sql="INSERT INTO computadora (ip,nombre,estado) VALUES('$ip','$nombre','$estado')";
 $query= mysqli_query($con,$sql);
 
 if($query){

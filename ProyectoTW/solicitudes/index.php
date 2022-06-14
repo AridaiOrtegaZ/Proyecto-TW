@@ -120,7 +120,7 @@
                             <input type="text" class="form-control" name="txtCarrera" autofocus required><br>
                             <input type="text" class="form-control" name="txtEntrada" value="<?php date_default_timezone_set('America/Mexico_City'); echo 
                              date('g:i:s A') ?>" readonly><br><br>
-                            <input type="text" class="form-control" name="txtSalida" placeholder="16:30:00 " autofocus required><br>
+                            <input type="text" class="form-control" name="txtSalida" placeholder="16:30:00 PM" autofocus required><br>
                             <input type="text" class="form-control" name="txtEquipo" autofocus required><br><br>
                             <input type="text"  class="form-control" name="txtDescripcion" autofocus required><br>
                             <input type="text" class="form-control" name="txtInventario" autofocus required><br><br>

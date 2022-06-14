@@ -70,28 +70,7 @@
 <div class="container" role="main">
 
         <div class="c1">
-            <div class="menu">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item">
-                                    <a class="nav-link" href="../index.php">Volver</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="../../chat-websocket/clienteAnonimo.php">Chat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../anonimo/equipos/equipos.php">Lista de equipos</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            
         </div>
 
 <body onload="init()">

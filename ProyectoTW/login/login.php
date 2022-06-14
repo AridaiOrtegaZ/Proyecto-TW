@@ -223,6 +223,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="pie-form">
                         <a href="register.php">¿No tienes Cuenta? Registrate</a>
                         <hr>
+                        <a href="../chat-websocket/clienteAnonimo.php">Chatea con alguno de nuestros administradores.</a>
+                        <a href="../anonimo/equipos/equipos.php">Visualiza nuestros equipos aquí.</a>
                     </div>
                 </div>
         </div>

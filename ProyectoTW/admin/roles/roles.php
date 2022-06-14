@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if($stmt->execute()){
 
-                header("location: usuarios.php");
+                header("location: roles.php");
             } else{
                 echo "Oops! Algo salió mal. Intenta de nuevo más tarde.";
             }
@@ -179,7 +179,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     <a class="nav-link" href="../listaUsuarios/alumno.php">Lista de usuarios</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="../admin/roles/roles.php">Roles</a>
+                                <a class="nav-link active" aria-current="page" href="../roles/roles.php">Roles</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../../solicitudes/tabla.php">Bitácora de uso</a>
@@ -197,7 +197,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../chat-websocket/clienteAdministrador.php">Chat usuarios anónimos</a>
+                                    <a class="nav-link" href="../../chat-websocket/clienteAdministrador.php">Chat usuarios anónimos</a>
                                 </li>
                             </ul>
                         </div>
