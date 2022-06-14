@@ -9,25 +9,85 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Bienvenido Administrador</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>WebSocket</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+	<script type="text/javascript">
+		var socket;
+
+
+		function init() {
+			// Apuntar a la IP/Puerto configurado en el contructor del WebServerSocket, que es donde está escuchando el socket.
+			var host = "ws://localhost:9000";
+			try {
+				socket = new WebSocket(host);
+				log('Bienvenido - status ' + socket.readyState);
+				socket.onopen = function (msg) {
+					log("En línea - status " + this.readyState);
+				};
+				socket.onmessage = function (msg) {
+					log("Recibido: " + msg.data);
+				};
+				socket.onclose = function (msg) {
+					log("Desconectado - status " + this.readyState);
+				};
+			}
+			catch (ex) {
+				log(ex);
+			}
+			$("msg").focus();
+		}
+
+		function send() {
+			var txt, msg;
+			txt = $("msg");
+			msg = txt.value;
+			if (!msg) {
+				alert("El mensaje no pudo ser enviado");
+				return;
+			}
+			txt.value = "";
+			txt.focus();
+			try {
+				socket.send(msg);
+				log('Enviado: ' + msg);
+			} catch (ex) {
+				log(ex);
+			}
+		}
+		function quit() {
+			if (socket != null) {
+				log("Adiós!");
+				socket.close();
+				socket = null;
+			}
+		}
+
+		function reconnect() {
+			quit();
+			init();
+		}
+
+		// Utilities
+		function $(id) { return document.getElementById(id); }
+		function log(msg) { $("log").innerHTML += "<br>" + msg; }
+		function onkey(event) { if (event.keyCode == 13) { send(); } }
+	</script>
+
 </head>
 
-<body>
+<body onload="init()">
 
-    <div class="usuario">
+	<div class="usuario">
         <?php
         $usuario = $_SESSION['username'];
         echo "<p><h4>$usuario</h4></p>";
         ?>
         <figure>
-            <button type="button" onclick="document.location='logout.php'"> <img src="img/logout.png" height="51px" width="50px"> </button>
+            <button type="button" onclick="document.location='../login/logout.php'"> <img src="img/logout.png" height="50px" width="50px"> </button>
             <figcaption>Cerrar Sesión</figcaption>
         </figure>
     </div>
@@ -42,7 +102,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
+						<ul class="navbar-nav">
                             <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
                                 </li>
@@ -71,7 +131,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../chat-websocket/clienteAdministrador.php">Chat usuarios anónimos</a>
+									<a class="nav-link" href="../chat-websocket/clienteAdministrador.php">Chat usuarios anónimos</a>
                                 </li>
                             </ul>
                         </div>
@@ -79,30 +139,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </nav>
             </div>
 
-            <div class="contenido">
-                <hr>
-                <h1>Bienvenido</h1>
-                <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
-                    unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
-                    la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
-                </p>
-                <p>Este sistema fue elaborado con el objetivo de facilitar diversas tareas al personal del Centro de Cómputo de la Facultad
-                    de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
-                    el registro de solicitudes de prétamos del equipo de cómputo.
-                </p>
-            </div>
-
         </div>
 
-        <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>-->
-        <p>
-            <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
-        </p>
+        <h3>Chat "Usuarios no registrados"</h3>
 
-    </div>
+		<div class="chatWebSocket">
+			<div id="log"></div>
+				<p><input id="msg" type="textbox" onkeypress="onkey(event)" /></p>
+				<button class="btn btn-primary" onclick="send()">Enviar</button>
+				<button class="btn btn-light" onclick="reconnect()">Reconectar</button>
+			</div>
 
-
+		</div>
+	
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

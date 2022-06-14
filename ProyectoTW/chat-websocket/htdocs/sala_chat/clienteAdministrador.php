@@ -102,9 +102,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-							<li class="nav-item">
-                            	<a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
-                            </li>
+						<ul class="navbar-nav">
+                            <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="../login/welcome.php">Acerca de Nosotros</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../solicitudes/index.php">Registro de solicitud</a>
                                 </li>
@@ -130,8 +131,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <a class="nav-link" href="https://microservicio-todolist.herokuapp.com/ws/todolist.wsdl">Agenda</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../../chat-websocket/htdocs/sala_chat/clienteAdministrador.php">Chat usuarios anónimos</a>
+                                    <a class="nav-link" href="">Chat usuarios anónimos</a>
                                 </li>
+                            </ul>
                         </div>
                     </div>
                 </nav>
