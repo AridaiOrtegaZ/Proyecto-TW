@@ -81,23 +81,25 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
             <div class="contenido">
                 <hr>
-                <h1>Bienvenido</h1>
-                <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
-                    unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
-                    la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
+                <h2>Bienvenido</h2>
+                <p>Este sistema está dirigido a toda la comunidad de Facultad de Estadística e Informática, 
+                    nuestra intención es ofrecer la posibilidad de realizar de manera breve y sencilla el préstamo de algún equipo 
+                    computacional, mediante un sitio web intuitivo, con buen diseño visual y que responda en tiempo y forma a 
+                    las peticiones de los diferentes usuarios.
                 </p>
-                <p>Este sistema fue elaborado con el objetivo de facilitar diversas tareas al personal del Centro de Cómputo de la Facultad
-                    de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
-                    el registro de solicitudes de prétamos del equipo de cómputo.
+                <h3>Descripción del sistema</h3>
+                <p>Este sistema fue desarrollado buscando cumplir un objetivo principal, que para nuestro equipo de desarrollo era: 
+                    facilitar diversas tareas al personal del Centro de Cómputo de la Facultad de Estadística e Informática, 
+                    buscando automatizar y sistematizar la mayor cantidad de tareas para cada uno de los usuarios. 
+                    Este sistema fue desarrollado a base de mucho esfuerzo y dedicación. Esperamos y les sea de ayuda, por último, 
+                    solo nos queda invitarte a explorar y disfrutar de nuestro sistema web.
                 </p>
             </div>
 
         </div>
 
-        <!--<h1 class="my-5">Hola, <b><!?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Bienvenido al Sitio de Administador.</h1>-->
         <p>
             <a href="reset-password.php" class="btn btn-warning">¿Olvidaste tu contraseña?</a>
-            <a href="logout.php" class="btn btn-danger ml-3">Cerrar Sesión</a>
         </p>
 
     </div>

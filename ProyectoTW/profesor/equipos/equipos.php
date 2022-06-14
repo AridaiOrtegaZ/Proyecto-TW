@@ -34,7 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         echo "<p><h4>$usuario</h4></p>";
         ?>
         <figure>
-            <button type="button" onclick="document.location='logout.php'"> <img src="../img/logout.png" height="50px" width="50px"> </button>
+            <button type="button" onclick="document.location='../../login/logout.php'"> <img src="../img/logout.png" height="50px" width="50px"> </button>
             <figcaption>Cerrar Sesión</figcaption>
         </figure>
     </div>
@@ -67,19 +67,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     </div>
                 </nav>
             </div>
-
-            <!--div class="contenido">
-                <hr>
-                <h1>Bienvenido</h1>
-                <p>El Centro de Cómputo de la Facultad de Estadística e Informática es una
-                    unidad, la cual ofrece a la comunidad de la Universidad Veracruzana
-                    la posibilidad de utilizar y pedir prestado el equipo computacional cuando sea requerido.
-                </p>
-                <p>Este sistema fue elaborado con el objetivo de facilitar diversas tareas al personal del Centro de Cómputo de la Facultad
-                    de Estadística e Informática, buscando automatizar y sistematizar algunas tareas, como lo son en este caso
-                    el registro de solicitudes de prétamos del equipo de cómputo.
-                </p>
-            </div-->
 
         </div>
         

@@ -73,6 +73,7 @@ label{
 
 button{
   text-align: center;
+  background-color: transparent;
 }
 
 tbody tr:nth-child(odd) {

@@ -152,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<p><h3>$usuario</h3></p>";
         ?>
         <figure>
-            <button type="button" onclick="document.location='logout.php'"> <img src="../img/logout.png" height="50px" width="50px"> </button>
+            <button type="button" onclick="document.location='../../login/logout.php'"> <img src="../img/logout.png" height="50px" width="50px"> </button>
             <figcaption>Cerrar Sesión</figcaption>
         </figure>
     </div>
